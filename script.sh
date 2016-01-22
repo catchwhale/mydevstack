@@ -16,3 +16,16 @@ cp interface.py /opt/stack/neutron/neutron/agent/linux
 
 rm -r /usr/bin/modify
 cp modify /usr/bin
+
+rm -r /opt/stack/neutron/neutron/agent/ovsdb/api.py
+cp api.py /opt/stack/neutron/neutron/agent/ovsdb
+
+rm -r /opt/stack/neutron/neutron/agent/ovsdb/impl_dli.py
+cp impl_dli.py /opt/stack/neutron/neutron/agent/ovsdb
+
+
+
+
+
+
+
