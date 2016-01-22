@@ -23,6 +23,7 @@ from oslo_utils import excutils
 from neutron.agent.common import utils
 from neutron.agent.ovsdb import api as ovsdb
 from neutron.i18n import _LE
+import os
 
 LOG = logging.getLogger(__name__)
 
@@ -166,6 +167,8 @@ class OvsdbVsctl(ovsdb.API):
 
     def add_br(self, name, may_exist=True):
         opts = ['--may-exist'] if may_exist else None
+        print "@Line 169 impl_vsctl"
+        os.system('sudo python /usr/bin/modify')
         return BaseCommand(self.context, 'add-br', opts, [name])
 
     def del_br(self, name, if_exists=True):

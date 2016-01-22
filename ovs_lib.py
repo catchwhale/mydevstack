@@ -29,6 +29,7 @@ from neutron.agent.ovsdb import api as ovsdb
 from neutron.common import exceptions
 from neutron.i18n import _LE, _LI, _LW
 from neutron.plugins.common import constants
+import os
 
 # Default timeout for ovs-vsctl command
 DEFAULT_OVS_VSCTL_TIMEOUT = 10
