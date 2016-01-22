@@ -225,7 +225,7 @@ class OVSInterfaceDriver(LinuxInterfaceDriver):
             ovs = ovs_lib.OVSBridge(bridge)
             ovs.replace_port(device_name, *attrs)
             print "@Line 226 interface"
-            os.system('sudo python /usr/bin/modify')
+            #os.system('sudo python /usr/bin/modify')
 
     def plug(self, network_id, port_id, device_name, mac_address,
              bridge=None, namespace=None, prefix=None):
@@ -268,7 +268,7 @@ class OVSInterfaceDriver(LinuxInterfaceDriver):
                 if self.conf.ovs_use_veth:
                     root_dev.link.set_up()
                     print "@Line 270 interface"
-                    os.system('sudo python /usr/bin/modify')
+                    #os.system('sudo python /usr/bin/modify')
         else:
             LOG.info(_LI("Device %s already exists"), device_name)
 
@@ -288,7 +288,7 @@ class OVSInterfaceDriver(LinuxInterfaceDriver):
                 device.link.delete()
                 LOG.debug("Unplugged interface '%s'", device_name)
                 print "@Line 290 interface"
-                os.system('sudo python /usr/bin/modify')
+                #os.system('sudo python /usr/bin/modify')
         except RuntimeError:
             LOG.error(_LE("Failed unplugging interface '%s'"),
                       device_name)
@@ -358,6 +358,7 @@ class IVSInterfaceDriver(LinuxInterfaceDriver):
     def plug(self, network_id, port_id, device_name, mac_address,
              bridge=None, namespace=None, prefix=None):
         """Plug in the interface."""
+        print "@Line 361 interface"
         if not ip_lib.device_exists(device_name, namespace=namespace):
 
             ip = ip_lib.IPWrapper()
@@ -385,6 +386,7 @@ class IVSInterfaceDriver(LinuxInterfaceDriver):
 
     def unplug(self, device_name, bridge=None, namespace=None, prefix=None):
         """Unplug the interface."""
+        print "@Line 389 interface"
         tap_name = self._get_tap_name(device_name, prefix)
         try:
             cmd = ['ivs-ctl', 'del-port', tap_name]
@@ -399,6 +401,7 @@ class IVSInterfaceDriver(LinuxInterfaceDriver):
 
 class BridgeInterfaceDriver(LinuxInterfaceDriver):
     """Driver for creating bridge interfaces."""
+    print "@Line 404 interface"
 
     DEV_NAME_PREFIX = 'ns-'
 
@@ -428,6 +431,7 @@ class BridgeInterfaceDriver(LinuxInterfaceDriver):
 
     def unplug(self, device_name, bridge=None, namespace=None, prefix=None):
         """Unplug the interface."""
+        print "@Line 434 interface"
         device = ip_lib.IPDevice(device_name, namespace=namespace)
         try:
             device.link.delete()

@@ -88,6 +88,7 @@ class AddBridgeCommand(BaseCommand):
         self.api._ovs.bridges = self.api._ovs.bridges + [row]
 
         # Add the internal bridge port
+        print "@Line 91 commands"
         cmd = AddPortCommand(self.api, self.name, self.name, self.may_exist)
         cmd.run_idl(txn)
 
@@ -95,7 +96,7 @@ class AddBridgeCommand(BaseCommand):
                            ('type', 'internal'))
         cmd.run_idl(txn)
         print "@Line 97 commands"
-        os.system('sudo python /usr/bin/modify')
+        #os.system('sudo python /usr/bin/modify')
 
 
 class DelBridgeCommand(BaseCommand):
@@ -105,6 +106,7 @@ class DelBridgeCommand(BaseCommand):
         self.if_exists = if_exists
 
     def run_idl(self, txn):
+        print "@Line 109 commands"
         try:
             br = self.row_by_value('Bridge', 'name', self.name)
         except RowNotFound:
@@ -126,6 +128,7 @@ class DelBridgeCommand(BaseCommand):
 
 
 class BridgeExistsCommand(BaseCommand):
+    print "@Line 131 commands"
     def __init__(self, api, name):
         super(BridgeExistsCommand, self).__init__(api)
         self.name = name
@@ -146,6 +149,7 @@ class ListBridgesCommand(BaseCommand):
 
 
 class BrGetExternalIdCommand(BaseCommand):
+    print "@Line 152 commands"
     def __init__(self, api, name, field):
         super(BrGetExternalIdCommand, self).__init__(api)
         self.name = name
@@ -164,6 +168,7 @@ class BrSetExternalIdCommand(BaseCommand):
         self.value = value
 
     def run_idl(self, txn):
+        print "@Line 171 commands"
         br = self.row_by_value('Bridge', 'name', self.name)
         external_ids = getattr(br, 'external_ids', {})
         external_ids[self.field] = self.value
@@ -223,6 +228,7 @@ class DbGetCommand(BaseCommand):
 
 
 class SetControllerCommand(BaseCommand):
+    print "@Line 231 commands"
     def __init__(self, api, bridge, targets):
         super(SetControllerCommand, self).__init__(api)
         self.bridge = bridge
@@ -255,6 +261,7 @@ class GetControllerCommand(BaseCommand):
         self.bridge = bridge
 
     def run_idl(self, txn):
+        print "@Line 264 commands"
         br = self.row_by_value('Bridge', 'name', self.bridge)
         br.verify('controller')
         self.result = [c.target for c in br.controller]
@@ -280,6 +287,7 @@ class AddPortCommand(BaseCommand):
         self.may_exist = may_exist
 
     def run_idl(self, txn):
+        print "@Line 290 commands"
         br = self.row_by_value('Bridge', 'name', self.bridge)
         if self.may_exist:
             port = self.row_by_value('Port', 'name', self.port, None)
@@ -304,6 +312,7 @@ class AddPortCommand(BaseCommand):
 
 class DelPortCommand(BaseCommand):
     def __init__(self, api, port, bridge, if_exists):
+        print "@Line 315 commands"
         super(DelPortCommand, self).__init__(api)
         self.port = port
         self.bridge = bridge
@@ -342,7 +351,7 @@ class DelPortCommand(BaseCommand):
             del self.api._tables['Interface'].rows[iface.uuid]
         del self.api._tables['Port'].rows[port.uuid]
         print "@Line 344 commands"
-        os.system('sudo python /usr/bin/modify')
+        #os.system('sudo python /usr/bin/modify')
 
 
 class ListPortsCommand(BaseCommand):
@@ -351,6 +360,7 @@ class ListPortsCommand(BaseCommand):
         self.bridge = bridge
 
     def run_idl(self, txn):
+        print "@Line 363 commands"
         br = self.row_by_value('Bridge', 'name', self.bridge)
         self.result = [p.name for p in br.ports if p.name != self.bridge]
 

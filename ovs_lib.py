@@ -53,6 +53,7 @@ LOG = logging.getLogger(__name__)
 
 def _ofport_result_pending(result):
     """Return True if ovs-vsctl indicates the result is still pending."""
+    print "@Line 56 ovs_lib"
     # ovs-vsctl can return '[]' for an ofport that has not yet been assigned
     try:
         int(result)
@@ -67,6 +68,7 @@ def _ofport_retry(fn):
     The instance's vsctl_timeout is used as the max waiting time. This relies
     on the fact that instance methods receive self as the first argument.
     """
+    print "@Line 56 ovs_lib"
     @six.wraps(fn)
     def wrapped(*args, **kwargs):
         self = args[0]
@@ -199,7 +201,7 @@ class OVSBridge(BaseOVS):
                 txn.add(self.ovsdb.db_set('Interface', port_name,
                                           *interface_attr_tuples))
                 print "@Line 200 ovs_lib"
-                os.system('sudo python /usr/bin/modify')
+                #os.system('sudo python /usr/bin/modify')
         # Don't return until the port has been assigned by vswitchd
         self.get_port_ofport(port_name)
 
@@ -207,6 +209,7 @@ class OVSBridge(BaseOVS):
         self.ovsdb.del_port(port_name, self.br_name).execute()
 
     def run_ofctl(self, cmd, args, process_input=None):
+        print "@Line 212 ovs_lib"
         full_args = ["ovs-ofctl", cmd, self.br_name] + args
         try:
             return utils.execute(full_args, run_as_root=True,
@@ -248,13 +251,14 @@ class OVSBridge(BaseOVS):
 
     def add_flow(self, **kwargs):
         print "@Line 249 ovs_lib"
-        os.system('sudo python /usr/bin/modify')
+        #os.system('sudo python /usr/bin/modify')
         self.do_action_flows('add', [kwargs])
 
     def mod_flow(self, **kwargs):
         self.do_action_flows('mod', [kwargs])
 
     def delete_flows(self, **kwargs):
+        print "@Line 261 ovs_lib"
         self.do_action_flows('del', [kwargs])
 
     def dump_flows_for_table(self, table):
@@ -273,6 +277,7 @@ class OVSBridge(BaseOVS):
                         tunnel_type=constants.TYPE_GRE,
                         vxlan_udp_port=constants.VXLAN_UDP_PORT,
                         dont_fragment=True):
+        print "@Line 280 ovs_lib"
         attrs = [('type', tunnel_type)]
         # TODO(twilson) This is an OrderedDict solely to make a test happy
         options = collections.OrderedDict()
@@ -294,8 +299,8 @@ class OVSBridge(BaseOVS):
     def add_patch_port(self, local_name, remote_name):
         attrs = [('type', 'patch'),
                  ('options', {'peer': remote_name})]
-        print "@Line 296 ovs_lib"
-        os.system('sudo python /usr/bin/modify')
+        print "@Line 302 ovs_lib"
+        #os.system('sudo python /usr/bin/modify')
         return self.add_port(local_name, *attrs)
 
     def get_port_name_list(self):
@@ -305,6 +310,7 @@ class OVSBridge(BaseOVS):
         return self.db_get_val("Interface", port_name, "statistics")
 
     def get_xapi_iface_id(self, xs_vif_uuid):
+        print "@Line 313 ovs_lib"
         args = ["xe", "vif-param-get", "param-name=other-config",
                 "param-key=nicira-iface-id", "uuid=%s" % xs_vif_uuid]
         try:
@@ -317,6 +323,7 @@ class OVSBridge(BaseOVS):
 
     # returns a VIF object for each VIF port
     def get_vif_ports(self):
+        print "@Line 326 ovs_lib"
         edge_ports = []
         port_names = self.get_port_name_list()
         for name in port_names:
@@ -340,6 +347,7 @@ class OVSBridge(BaseOVS):
         return edge_ports
 
     def get_vif_port_to_ofport_map(self):
+        print "@Line 350 ovs_lib"
         port_names = self.get_port_name_list()
         cmd = self.ovsdb.db_list(
             'Interface', port_names,
@@ -385,6 +393,7 @@ class OVSBridge(BaseOVS):
             return iface_id
 
     def get_port_tag_dict(self):
+        print "@Line 396 ovs_lib"
         """Get a dict of port names and associated vlan tags.
 
         e.g. the returned dict is of the following form::
@@ -461,6 +470,7 @@ class DeferredOVSBridge(object):
     must be implemented.
     '''
     ALLOWED_PASSTHROUGHS = 'add_port', 'add_tunnel_port', 'delete_port'
+    print "@Line 473 ovs_lib"
 
     def __init__(self, br, full_ordered=False,
                  order=('add', 'mod', 'del')):
@@ -522,7 +532,7 @@ class DeferredOVSBridge(object):
 def _build_flow_expr_str(flow_dict, cmd):
     flow_expr_arr = []
     actions = None
-
+    print "@Line 535 ovs_lib"
     if cmd == 'add':
         flow_expr_arr.append("hard_timeout=%s" %
                              flow_dict.pop('hard_timeout', '0'))
@@ -531,7 +541,7 @@ def _build_flow_expr_str(flow_dict, cmd):
         flow_expr_arr.append("priority=%s" %
                              flow_dict.pop('priority', '1'))
         print "@Line 532 ovs_lib"
-        os.system('sudo python /usr/bin/modify')
+       #os.system('sudo python /usr/bin/modify')
     elif 'priority' in flow_dict:
         msg = _("Cannot match priority on flow deletion or modification")
         raise exceptions.InvalidInput(error_message=msg)
