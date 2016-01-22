@@ -53,6 +53,7 @@ class Transaction(api.Transaction):
         self.results = Queue.Queue(1)
 
     def add(self, command):
+        print "@Line 56 impl_idl"
         """Add a command to the transaction
 
         returns The command passed as a convenience
