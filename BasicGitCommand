@@ -1,0 +1,10 @@
+git init
+
+git add <filename>
+git commit -m "Update"
+git config --global user.name "catchwhale"
+git config --global user.email "mrjoe8888@gmail.com"
+git push origin master #update to master github
+git full origin master #to update local files from master github
+
+git clone https://github.com/catchwhale/xplan-project #clone repo from master
