@@ -5,6 +5,16 @@ git commit -m "Update"
 git config --global user.name "catchwhale"
 git config --global user.email "mrjoe8888@gmail.com"
 git push origin master #update to master github
-git full origin master #to update local files from master github
+git pull origin master #to update local files from master github
 
 git clone https://github.com/catchwhale/xplan-project #clone repo from master
+
+$ git branch #display active branch
+$ git push <remote repo alias> <local branch name>:<remote branch name> #git push origin master:master, push to origin/master using local master branch
+
+git branch #
+
+to update existing file:
+git commit -m "Update"
+ git commit -a
+ git push origin master:master

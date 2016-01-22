@@ -352,6 +352,7 @@ class IVSInterfaceDriver(LinuxInterfaceDriver):
         return dev_name
 
     def _ivs_add_port(self, device_name, port_id, mac_address):
+        print "@Line 355 interface"
         cmd = ['ivs-ctl', 'add-port', device_name]
         utils.execute(cmd, run_as_root=True)
 
