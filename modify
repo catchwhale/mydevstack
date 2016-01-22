@@ -89,8 +89,8 @@ def remove_interface(interface, bridge):
 			pass
 
 def main():
-	while True: # Continuous loop here
-		get_all_bridges_w_interfaces()
+	#while True: # Continuous loop here
+	get_all_bridges_w_interfaces()
 	#raw_input('input here')
 			
 # Main start here
