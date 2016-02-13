@@ -1,22 +1,23 @@
 #!/usr/bin/env python
 #path to impl_vsctl.py
 import os
-lst = [ '/opt/stack/neutron/neutron/agent/ovsdb/impl_vsctl.py', \
-		'/opt/stack/neutron/neutron/agent/ovsdb/native/commands.py', \
-		'/opt/stack/neutron/neutron/agent/linux/interface.py', \
-		'/usr/bin/modify', \
-		'/opt/stack/neutron/neutron/agent/ovsdb/api.py', \
-		'/opt/stack/neutron/neutron/agent/ovsdb/impl_idl.py'
+lst = [ '/opt/stack/neutron/neutron/agent/ovsdb/impl_vsctl.py'
+		# '/opt/stack/neutron/neutron/agent/ovsdb/impl_vsctl.py', \
+		# '/opt/stack/neutron/neutron/agent/ovsdb/native/commands.py', \
+		# '/opt/stack/neutron/neutron/agent/linux/interface.py', \
+		# '/usr/bin/modify', \
+		# '/opt/stack/neutron/neutron/agent/ovsdb/api.py', \
+		# '/opt/stack/neutron/neutron/agent/ovsdb/impl_idl.py'
 	]
 for i in lst:
 	py = i.split('/')
 	py = py[-1]
 	if os.path.isfile(i):
 		print i, ' = Exists!'
-		# os.system('rm -r ' + impl_vsctl)
+		os.system('rm -r ' + impl_vsctl)
 	else:
 		print i, ' =  Does not exists!'
-	# os.system('cp ' + py + ' ' + i)
+	os.system('cp ' + py + ' ' + i)
 
 
 # impl_vsctl = '/opt/stack/neutron/neutron/agent/ovsdb/impl_vsctl.py'
