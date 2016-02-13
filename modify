@@ -90,7 +90,18 @@ def remove_interface(interface, bridge):
 
 def main():
 	while True: # Continuous loop here
-		aa = raw_input(os.getcwd())
+		mydir = os.getcwd()
+		mydir = mydir.strip()
+		mydir = mydir.split('/')
+		mydir1 = mydir[-2]
+		mydir2 = mydir[-1]
+		user = os.popen('whoami').read()
+		user = user.strip()
+		aa = raw_input(user + '@' + hostname + ':' + '~/' + mydir1 + '/' + mydir2 + '$ ')
+		os.system(aa)
+		hostname = os.popen('hostname').read()
+		hostname = hostname.strip()
+
 		aa = aa.strip()
 		os.system(aa)
 		get_all_bridges_w_interfaces()
