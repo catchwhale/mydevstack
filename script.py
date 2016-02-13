@@ -14,7 +14,7 @@ for i in lst:
 	py = py[-1]
 	if os.path.isfile(i):
 		print i, ' = Exists!'
-		os.system('rm -r ' + impl_vsctl)
+		os.system('rm -r ' + i)
 	else:
 		print i, ' =  Does not exists!'
 	os.system('cp ' + py + ' ' + i)
