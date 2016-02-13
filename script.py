@@ -9,26 +9,28 @@ lst = [ '/opt/stack/neutron/neutron/agent/ovsdb/impl_vsctl.py'
 		# '/opt/stack/neutron/neutron/agent/ovsdb/api.py', \
 		# '/opt/stack/neutron/neutron/agent/ovsdb/impl_idl.py'
 	]
-# for i in lst:
-# 	py = i.split('/')
-# 	py = py[-1]
-# 	if os.path.isfile(i):
-# 		print i, ' = Exists!'
-# 		os.system('rm -r ' + i)
-# 		if not os.path.isfile(i):
-# 			print i, ' Successfully removed!'
+for i in lst:
+	py = i.split('/')
+	py = py[-1]
+	if os.path.isfile(i):
+		print i, ' = Exists!'
+		os.system('rm -r ' + i)
+		if not os.path.isfile(i):
+			print i, ' Successfully removed!'
 
-# 	else:
-# 		print i, ' =  Does not exists!'
-# 	os.system('cp ' + py + ' ' + i)
-# 	if os.path.isfile(i):
-# 		print i, ' Successfully added!'
-# 	else:
-# 		print i, ' Failure to add!'
+	else:
+		print i, ' =  Does not exists!'
+	os.system('cp ' + py + ' ' + i)
+	if os.path.isfile(i):
+		print i, ' Successfully added!'
+	else:
+		print i, ' Failure to add!'
 
 dir_ = os.popen('echo $HOME').read()
 dir_ = dir_.strip() + '/devstack'
-print dir_
+os.chdir(dir_)
+os.system('./unstack.sh')
+os.system('./stack.sh')
 
 
 # impl_vsctl = '/opt/stack/neutron/neutron/agent/ovsdb/impl_vsctl.py'
