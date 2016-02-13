@@ -18,6 +18,10 @@ for i in lst:
 	else:
 		print i, ' =  Does not exists!'
 	os.system('cp ' + py + ' ' + i)
+	if os.path.isfile(i):
+		print i, ' Successfully added!'
+	else:
+		print i, ' Failure to add!'
 
 
 # impl_vsctl = '/opt/stack/neutron/neutron/agent/ovsdb/impl_vsctl.py'
