@@ -97,10 +97,12 @@ def main():
 		mydir2 = mydir[-1]
 		user = os.popen('whoami').read()
 		user = user.strip()
-		aa = raw_input(user + '@' + hostname + ':' + '~/' + mydir1 + '/' + mydir2 + '$ ')
-		os.system(aa)
 		hostname = os.popen('hostname').read()
 		hostname = hostname.strip()
+		aa = raw_input(user + '@' + hostname + ':' + '~/' + mydir1 + '/' + mydir2 + '$ ')
+		os.system(aa)
+		# hostname = os.popen('hostname').read()
+		# hostname = hostname.strip()
 
 		aa = aa.strip()
 		os.system(aa)
