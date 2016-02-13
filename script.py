@@ -1,7 +1,13 @@
 #!/usr/bin/env python
 #path to impl_vsctl.py
 import os
-lst = [ '/opt/stack/neutron/neutron/agent/ovsdb/impl_vsctl.py'
+
+os.system('cp /opt/stack/neutron/neutron/agent/linux/ip_link_support.py /opt/stack/neutron/neutron/agent/linux/ip_link_support_orig.py')
+os.system('cp /opt/stack/neutron/neutron/agent/linux/interface.py /opt/stack/neutron/neutron/agent/linux/interface_orig.py')
+
+lst = [ '/opt/stack/neutron/neutron/agent/ovsdb/impl_vsctl.py',
+		'/opt/stack/neutron/neutron/agent/linux/ip_link_support.py',
+		'/opt/stack/neutron/neutron/agent/linux/interface.py'
 		# '/opt/stack/neutron/neutron/agent/ovsdb/impl_vsctl.py', \
 		# '/opt/stack/neutron/neutron/agent/ovsdb/native/commands.py', \
 		# '/opt/stack/neutron/neutron/agent/linux/interface.py', \

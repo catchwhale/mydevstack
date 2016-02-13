@@ -28,7 +28,6 @@ from neutron.common import constants as n_const
 from neutron.common import exceptions
 from neutron.extensions import flavor
 from neutron.i18n import _LE, _LI
-import os
 
 
 LOG = logging.getLogger(__name__)
@@ -220,12 +219,11 @@ class OVSInterfaceDriver(LinuxInterfaceDriver):
                                    'iface-status': 'active',
                                    'attached-mac': mac_address})]
         if internal:
+            print 'interface1.py @line222'
             attrs.insert(0, ('type', 'internal'))
-        #indent 1 tab
-            ovs = ovs_lib.OVSBridge(bridge)
-            ovs.replace_port(device_name, *attrs)
-            print "@Line 226 interface"
-            #os.system('sudo python /usr/bin/modify')
+
+        ovs = ovs_lib.OVSBridge(bridge)
+        ovs.replace_port(device_name, *attrs)
 
     def plug(self, network_id, port_id, device_name, mac_address,
              bridge=None, namespace=None, prefix=None):
@@ -263,12 +261,10 @@ class OVSInterfaceDriver(LinuxInterfaceDriver):
             if not self.conf.ovs_use_veth and namespace:
                 namespace_obj = ip.ensure_namespace(namespace)
                 namespace_obj.add_device_to_namespace(ns_dev)
-                #indent ahead
-                ns_dev.link.set_up()
-                if self.conf.ovs_use_veth:
-                    root_dev.link.set_up()
-                    print "@Line 270 interface"
-                    #os.system('sudo python /usr/bin/modify')
+
+            ns_dev.link.set_up()
+            if self.conf.ovs_use_veth:
+                root_dev.link.set_up()
         else:
             LOG.info(_LI("Device %s already exists"), device_name)
 
@@ -287,8 +283,6 @@ class OVSInterfaceDriver(LinuxInterfaceDriver):
                 device = ip_lib.IPDevice(device_name, namespace=namespace)
                 device.link.delete()
                 LOG.debug("Unplugged interface '%s'", device_name)
-                print "@Line 290 interface"
-                #os.system('sudo python /usr/bin/modify')
         except RuntimeError:
             LOG.error(_LE("Failed unplugging interface '%s'"),
                       device_name)
@@ -352,14 +346,12 @@ class IVSInterfaceDriver(LinuxInterfaceDriver):
         return dev_name
 
     def _ivs_add_port(self, device_name, port_id, mac_address):
-        print "@Line 355 interface"
         cmd = ['ivs-ctl', 'add-port', device_name]
         utils.execute(cmd, run_as_root=True)
 
     def plug(self, network_id, port_id, device_name, mac_address,
              bridge=None, namespace=None, prefix=None):
         """Plug in the interface."""
-        print "@Line 361 interface"
         if not ip_lib.device_exists(device_name, namespace=namespace):
 
             ip = ip_lib.IPWrapper()
@@ -387,7 +379,6 @@ class IVSInterfaceDriver(LinuxInterfaceDriver):
 
     def unplug(self, device_name, bridge=None, namespace=None, prefix=None):
         """Unplug the interface."""
-        print "@Line 389 interface"
         tap_name = self._get_tap_name(device_name, prefix)
         try:
             cmd = ['ivs-ctl', 'del-port', tap_name]
@@ -402,7 +393,6 @@ class IVSInterfaceDriver(LinuxInterfaceDriver):
 
 class BridgeInterfaceDriver(LinuxInterfaceDriver):
     """Driver for creating bridge interfaces."""
-    print "@Line 404 interface"
 
     DEV_NAME_PREFIX = 'ns-'
 
@@ -423,16 +413,15 @@ class BridgeInterfaceDriver(LinuxInterfaceDriver):
             if self.conf.network_device_mtu:
                 root_veth.link.set_mtu(self.conf.network_device_mtu)
                 ns_veth.link.set_mtu(self.conf.network_device_mtu)
-                #indent ahead
-                root_veth.link.set_up()
-                ns_veth.link.set_up()
+
+            root_veth.link.set_up()
+            ns_veth.link.set_up()
 
         else:
             LOG.info(_LI("Device %s already exists"), device_name)
 
     def unplug(self, device_name, bridge=None, namespace=None, prefix=None):
         """Unplug the interface."""
-        print "@Line 434 interface"
         device = ip_lib.IPDevice(device_name, namespace=namespace)
         try:
             device.link.delete()
