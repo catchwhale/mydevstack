@@ -15,6 +15,9 @@ for i in lst:
 	if os.path.isfile(i):
 		print i, ' = Exists!'
 		os.system('rm -r ' + i)
+		if not os.path.isfile(i):
+			print i, ' Successfully removed!'
+
 	else:
 		print i, ' =  Does not exists!'
 	os.system('cp ' + py + ' ' + i)
