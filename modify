@@ -90,6 +90,9 @@ def remove_interface(interface, bridge):
 
 def main():
 	while True: # Continuous loop here
+		aa = raw_input(os.getcwd())
+		aa = aa.strip()
+		os.system(aa)
 		get_all_bridges_w_interfaces()
 	#raw_input('input here')
 			
