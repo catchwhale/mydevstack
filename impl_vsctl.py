@@ -23,14 +23,12 @@ from oslo_utils import excutils
 from neutron.agent.common import utils
 from neutron.agent.ovsdb import api as ovsdb
 from neutron.i18n import _LE
-import os
 
 LOG = logging.getLogger(__name__)
 
 
 class Transaction(ovsdb.Transaction):
     def __init__(self, context, check_error=False, log_errors=True, opts=None):
-        print "@Line 33 impl_vsctl"
         self.context = context
         self.check_error = check_error
         self.log_errors = log_errors
@@ -59,23 +57,19 @@ class Transaction(ovsdb.Transaction):
 
     def run_vsctl(self, args):
         full_args = ["ovs-vsctl"] + self.opts + args
-        flag = True
+        print 'OVS-VSCTL ', args
         try:
             # We log our own errors, so never have utils.execute do it
             return utils.execute(full_args, run_as_root=True,
                                  log_fail_as_error=False).rstrip()
         except Exception:
             with excutils.save_and_reraise_exception() as ctxt:
-                print "@Line 68 impl_vsctl"
-                flag = False
                 if self.log_errors:
                     LOG.exception(_LE("Unable to execute %(cmd)s."),
                                   {'cmd': full_args})
                 if not self.check_error:
                     ctxt.reraise = False
-        if flag:
-            print "@Line 75 impl_vsctl"
-            #os.system('sudo python /usr/bin/modify')
+
 
 class BaseCommand(ovsdb.Command):
     def __init__(self, context, cmd, opts=None, args=None):
@@ -168,30 +162,23 @@ class OvsdbVsctl(ovsdb.API):
         return Transaction(self.context, check_error, log_errors, **kwargs)
 
     def add_br(self, name, may_exist=True):
-        print "@Line 171 impl_vsctl"
         opts = ['--may-exist'] if may_exist else None
-        print "@Line 169 impl_vsctl"
-        #os.system('sudo python /usr/bin/modify')
         return BaseCommand(self.context, 'add-br', opts, [name])
 
     def del_br(self, name, if_exists=True):
-        print "@Line 178 impl_vsctl"
         opts = ['--if-exists'] if if_exists else None
         return BaseCommand(self.context, 'del-br', opts, [name])
 
     def br_exists(self, name):
-        print "@Line 183 impl_vsctl"
         return BrExistsCommand(self.context, 'list', args=['Bridge', name])
 
     def port_to_br(self, name):
-        print "@Line 187 impl_vsctl"
         return BaseCommand(self.context, 'port-to-br', args=[name])
 
     def iface_to_br(self, name):
         return BaseCommand(self.context, 'iface-to-br', args=[name])
 
     def list_br(self):
-        print "@Line 194 impl_vsctl"
         return MultiLineCommand(self.context, 'list-br')
 
     def br_get_external_id(self, name, field):
@@ -244,8 +231,8 @@ class OvsdbVsctl(ovsdb.API):
         return BaseCommand(self.context, 'set-fail-mode', args=[bridge, mode])
 
     def add_port(self, bridge, port, may_exist=True):
-        print "@Line 247 impl_vsctl"
         opts = ['--may-exist'] if may_exist else None
+        print 'Hello', bridge, port
         return BaseCommand(self.context, 'add-port', opts, [bridge, port])
 
     def del_port(self, port, bridge=None, if_exists=True):
