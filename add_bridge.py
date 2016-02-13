@@ -8,3 +8,7 @@ input = input.strip()
 os.system('ip link add name ' + input ' type dummy')
 os.system('ip link set dev ' + input + ' up')
 os.system('ovs-vsctl add-port br-int ' + input)
+
+
+aa = os.popen('ovs-vsctl show |grep ' + input).read()
+print aa
