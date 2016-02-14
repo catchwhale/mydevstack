@@ -111,6 +111,8 @@ def main():
 		hostname = hostname.strip()
 		user1 = '\033[1m' + ( user + '@' + hostname )
 		mydir1 = '\033[1m' + ( '~/' + mydir1 + '/' + mydir2 )
+		print user1, mydir1
+		print user
 		if user != 'root':
 
 			user = colored(user1, 'green')
