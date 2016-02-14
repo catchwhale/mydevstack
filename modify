@@ -123,7 +123,7 @@ def main():
 			str_ = '~/' + mydir1 + '/' + mydir2
 			mydir1 = '\033[1m' + str_
 			# user1 = '\033[1m' + ( user + '@' + hostname )
-			user = colored(user1, 'green')
+			user1 = colored(user1, 'green')
 			semi = colored('\033[1m' + ':', 'white')
 			mydir = colored(mydir1, 'blue')
 			str_ = '\033[1m' + '$ '
@@ -148,7 +148,7 @@ def main():
 
 		# print semi 
 		# print hostname
-		print hostname
+		# print hostname
 		# print dollar
 		aa = raw_input(user1 + semi + mydir + dollar)
 		# user = getpass.getuser()
