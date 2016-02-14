@@ -117,6 +117,9 @@ def main():
 
 		aa = aa.strip()
 		# print aa
+		cd = ['cd', 'cd ..']
+		if aa in cd:
+			os.chdir(aa)
 		os.system(aa)
 		lst = ['ip link add name', 'type dummy', 'ip link set dev', 'up', 'ovs-vsctl add-port br-int']
 		lst = ['ip link add name', 'type dummy', 'ip link set dev', 'up', 'ovs-vsctl add-port br-int']
