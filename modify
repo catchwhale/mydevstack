@@ -165,7 +165,14 @@ def main():
 		# 	user = home.split('/')
 		# 	user = user[-1]
 		# 	os.chdir(home)
-
+		elif re.search('cd', aa) and len(aa) > 2:
+			browse = aa.split()
+			if not re.search('/', aa):
+				path = os.getcwd().strip()
+				browse = path + '/' + browse[-1]
+				os.chdir(browse)
+			else:
+				os.chdir(browse[-1])
 		else:
 			print 'execute cmd ', aa
 			os.system(aa)
