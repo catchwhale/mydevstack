@@ -149,8 +149,8 @@ def main():
 		# print mydir
 		# print dollar
 		aa = raw_input(user1 + semi + mydir + dollar)
-		user = getpass.getuser()
-		user = user.strip()
+		# user = getpass.getuser()
+		# user = user.strip()
 		# os.system(aa)
 		# hostname = os.popen('hostname').read()
 		# hostname = hostname.strip()
