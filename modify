@@ -96,7 +96,7 @@ def main():
 	user = getpass.getuser()
 	user = user.strip()
 	flag = True
-	mydir = '~'
+	mydir_ = '~'
 	while True: # Continuous loop here
 		mydir = os.getcwd()
 		mydir = mydir.strip()
@@ -120,12 +120,13 @@ def main():
 		else:
 			if flag:
 				flag = False
+				mydir = mydir_
 			else:	
 				mydir = os.getcwd()
 				mydir = mydir.strip()
 			if mydir == '/home':
 				mydir = '~'
-			print mydir
+			
 			user1 = colored(user1, 'white')
 			semi = colored('\033[1m' + ':', 'white')
 			mydir = colored(mydir, 'white')
