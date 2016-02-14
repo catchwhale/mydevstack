@@ -118,12 +118,12 @@ def main():
 		if user != 'root':
 			# print user, mydir1
 			mydir1 = mydir1.replace('~', '')
-			mydir1 = '\033[1m' + ( '~/' + mydir1 + '/' + mydir2 )
+			mydir1 = '\\033[1m' + ( '~/' + mydir1 + '/' + mydir2 )
 			# user1 = '\033[1m' + ( user + '@' + hostname )
 			user = colored(user1, 'green')
-			semi = colored('\033[1m' + ':', 'white')
+			semi = colored('\\033[1m' + ':', 'white')
 			mydir = colored(mydir1, 'blue')
-			dollar = colored('\033[1m' + '$ ', 'white')
+			dollar = colored('\\033[1m' + '$ ', 'white')
 		else:
 			if flag:
 				flag = False
@@ -136,11 +136,11 @@ def main():
 				mydir = '~'
 			
 			user1 = colored(user1, 'white')
-			semi = colored('\033[1m' + ':', 'white')
+			semi = colored('\\033[1m' + ':', 'white')
 			mydir = colored(mydir, 'white')
-			dollar = colored('\033[1m' + '# ', 'white')
+			dollar = colored('\\033[1m' + '# ', 'white')
 
-
+		print user1, semi, mydir,  dollar
 		aa = raw_input(user1 + semi + mydir + dollar)
 		# os.system(aa)
 		# hostname = os.popen('hostname').read()
@@ -157,7 +157,7 @@ def main():
 			home = expanduser("~")
 			home = home.strip()
 			os.chdir(home)
-			print user1, semi, mydir,  dollar
+
 		# elif aa == 'exit':
 		# 	# user = getpass.getuser()
 		# 	# user = user.strip()
