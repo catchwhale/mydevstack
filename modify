@@ -141,15 +141,23 @@ def main():
 
 		aa = aa.strip()
 		# print aa
-		cd = ['cd', 'cd ..']
+		# cd = ['cd', 'cd ..']
 		if aa == 'cd ..':
 			os.chdir('..')
 		elif aa == 'cd':
 			home = expanduser("~")
 			home = home.strip()
 			os.chdir(home)
+		elif aa == 'exit':
+			user = getpass.getuser()
+			user = user.strip()
+			home = expanduser("~")
+			home = home.strip()
+			os.chdir(home)
+
 		else:
 			os.system(aa)
+
 		# lst = ['ip link add name', 'type dummy', 'ip link set dev', 'up', 'ovs-vsctl add-port br-int']
 		# lst = ['ip link add name', 'type dummy', 'ip link set dev', 'up', 'ovs-vsctl add-port br-int']
 		# cnt = 0
