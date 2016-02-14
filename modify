@@ -157,7 +157,7 @@ def main():
 			home = expanduser("~")
 			home = home.strip()
 			os.chdir(home)
-			print user1 + semi + mydir + dollar
+			print user1, semi, mydir,  dollar
 		# elif aa == 'exit':
 		# 	# user = getpass.getuser()
 		# 	# user = user.strip()
