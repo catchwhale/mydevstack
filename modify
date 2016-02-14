@@ -140,7 +140,7 @@ def main():
 			mydir = colored(mydir, 'white')
 			dollar = colored('# ', 'white')
 
-		print user1
+		print user
 
 		print semi 
 		print mydir
