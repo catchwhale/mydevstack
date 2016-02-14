@@ -109,13 +109,16 @@ def main():
 		user1 = '\033[1m' + ( user + '@' + hostname )
 		mydir1 = '\033[1m' + ( '~/' + mydir1 + '/' + mydir2 )
 		if user != 'root':
-			print 'Not root'
+
 			user = colored(user1, 'green')
 			semi = colored('\033[1m' + ':', 'white')
 			mydir = colored(mydir1, 'blue')
 			dollar = colored('\033[1m' + '$ ', 'white')
 		else:
-			print 'Root'
+			mydir = os.getcwd()
+			if mydir = '/home':
+				mydir = '~'
+
 			user1 = colored(user1, 'white')
 			semi = colored('\033[1m' + ':', 'white')
 			mydir = colored(mydir, 'white')
