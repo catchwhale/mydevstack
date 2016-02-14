@@ -138,10 +138,10 @@ def main():
 			if mydir == '/':
 				mydir = '~'
 			
-			user1 = colored(user, 'white')
-			semi = colored(':', 'white')
-			mydir = colored(mydir, 'white')
-			dollar = colored('# ', 'white')
+			# user1 = colored(user, 'white')
+			# semi = colored(':', 'white')
+			# mydir = colored(mydir, 'white')
+			# dollar = colored('# ', 'white')
 
 		# print user1
 
