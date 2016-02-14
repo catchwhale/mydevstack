@@ -121,6 +121,7 @@ def main():
 			if flag:
 				flag = False
 				mydir = mydir_
+				os.chdir('/')
 			else:	
 				mydir = os.getcwd()
 				mydir = mydir.strip()
