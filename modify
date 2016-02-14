@@ -116,7 +116,8 @@ def main():
 			dollar = colored('\033[1m' + '$ ', 'white')
 		else:
 			mydir = os.getcwd()
-			if mydir = '/home':
+			mydir = mydir.strip()
+			if mydir == '/home':
 				mydir = '~'
 
 			user1 = colored(user1, 'white')
