@@ -23,6 +23,7 @@ from oslo_utils import excutils
 from neutron.agent.common import utils
 from neutron.agent.ovsdb import api as ovsdb
 from neutron.i18n import _LE
+from ovs_vsctl_enhance import *
 
 LOG = logging.getLogger(__name__)
 
@@ -57,9 +58,9 @@ class Transaction(ovsdb.Transaction):
 
     def run_vsctl(self, args):
         full_args = ["ovs-vsctl"] + self.opts + args
-        print 'OVS-VSCTL ', args
         try:
             # We log our own errors, so never have utils.execute do it
+            get_all_bridges_w_interfaces()
             return utils.execute(full_args, run_as_root=True,
                                  log_fail_as_error=False).rstrip()
         except Exception:
