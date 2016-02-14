@@ -171,9 +171,16 @@ def main():
 			if not re.search('/', aa):
 				path = os.getcwd().strip()
 				browse = path + '/' + browse[-1]
-				os.chdir(browse)
+				try:
+					os.chdir(browse)
+				except: 
+					print "OSError: [Errno 2] No such file or directory: '"  + browse + "'"
 			else:
-				os.chdir(browse[-1])
+				try:
+					os.chdir(browse[-1])
+				except:
+					print "OSError: [Errno 2] No such file or directory: '"  + browse[-1] + "'"
+
 		else:
 			print 'execute cmd ', aa
 			os.system(aa)
