@@ -103,6 +103,7 @@ def main():
 		# user = user.strip()
 		user = getpass.getuser()
 		user = user.strip()
+		print user
 		hostname = os.popen('hostname').read()
 		hostname = hostname.strip()
 		user = '\033[1m' + ( user + '@' + hostname )
