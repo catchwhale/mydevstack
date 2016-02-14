@@ -89,6 +89,7 @@ def remove_interface(interface, bridge):
 			pass
 
 def main():
+	os.system('clear')
 	while True: # Continuous loop here
 		mydir = os.getcwd()
 		mydir = mydir.strip()
