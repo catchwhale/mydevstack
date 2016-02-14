@@ -146,6 +146,7 @@ def main():
 			print user1
 
 			print semi 
+			print hostname
 			print mydir
 			print dollar
 		aa = raw_input(user1 + semi + mydir + dollar)
