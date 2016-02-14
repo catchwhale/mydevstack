@@ -101,9 +101,12 @@ def main():
 		mydir = os.getcwd()
 		mydir = mydir.strip()
 		mydir = mydir.split('/')
-		mydir1 = mydir[-2]
-		
-		mydir2 = mydir[-1]
+		if len(mydir) > 1:
+			mydir1 = mydir[-2]
+			mydir2 = mydir[-1]
+		else:
+			mydir1 = ''
+			mydir2 = mydir[-1]
 		# user = os.popen('whoami').read()
 		# user = user.strip()
 		
@@ -111,9 +114,9 @@ def main():
 		hostname = os.popen('hostname').read()
 		hostname = hostname.strip()
 		user1 = '\033[1m' + ( user + '@' + hostname )
-		print user1
+		# print user1
 		if user != 'root':
-			print user, mydir1
+			# print user, mydir1
 			mydir1 = mydir1.replace('~', '')
 			mydir1 = '\033[1m' + ( '~/' + mydir1 + '/' + mydir2 )
 			# user1 = '\033[1m' + ( user + '@' + hostname )
@@ -147,8 +150,10 @@ def main():
 		# print aa
 		# cd = ['cd', 'cd ..']
 		if aa == 'cd ..':
+			print 'cd ..'
 			os.chdir('..')
 		elif aa == 'cd':
+			print 'cd'
 			home = expanduser("~")
 			home = home.strip()
 			os.chdir(home)
@@ -162,7 +167,9 @@ def main():
 		# 	os.chdir(home)
 
 		else:
+			print 'execute cmd ', aa
 			os.system(aa)
+			print os.getcwd()
 
 		# lst = ['ip link add name', 'type dummy', 'ip link set dev', 'up', 'ovs-vsctl add-port br-int']
 		# lst = ['ip link add name', 'type dummy', 'ip link set dev', 'up', 'ovs-vsctl add-port br-int']
