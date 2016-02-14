@@ -102,7 +102,7 @@ def main():
 		mydir = mydir.strip()
 		mydir = mydir.split('/')
 		mydir1 = mydir[-2]
-		mydir1 = mydir1.replace('~', '')
+		
 		mydir2 = mydir[-1]
 		# user = os.popen('whoami').read()
 		# user = user.strip()
@@ -110,10 +110,13 @@ def main():
 		# print user
 		hostname = os.popen('hostname').read()
 		hostname = hostname.strip()
-		user1 = '\033[1m' + ( user + '@' + hostname )
-		mydir1 = '\033[1m' + ( '~/' + mydir1 + '/' + mydir2 )
+		
+		
 		if user != 'root':
-			print user, mydir1
+			# print user, mydir1
+			mydir1 = mydir1.replace('~', '')
+			mydir1 = '\033[1m' + ( '~/' + mydir1 + '/' + mydir2 )
+			user1 = '\033[1m' + ( user + '@' + hostname )
 			user = colored(user1, 'green')
 			semi = colored('\033[1m' + ':', 'white')
 			mydir = colored(mydir1, 'blue')
