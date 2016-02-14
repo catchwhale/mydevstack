@@ -140,7 +140,7 @@ def main():
 			mydir = colored('\033[1m' + mydir, 'white')
 			dollar = colored('\033[1m' + '# ', 'white')
 
-		print user1, semi, mydir,  dollar
+		# print user1, semi, mydir,  dollar
 		aa = raw_input(user1 + semi + mydir + dollar)
 		# os.system(aa)
 		# hostname = os.popen('hostname').read()
@@ -150,10 +150,10 @@ def main():
 		# print aa
 		# cd = ['cd', 'cd ..']
 		if aa == 'cd ..':
-			print 'cd ..'
+			# print 'cd ..'
 			os.chdir('..')
 		elif aa == 'cd':
-			print 'cd'
+			# print 'cd'
 			home = expanduser("~")
 			home = home.strip()
 			os.chdir(home)
@@ -182,9 +182,9 @@ def main():
 					print "OSError: [Errno 2] No such file or directory: '"  + browse[-1] + "'"
 
 		else:
-			print 'execute cmd ', aa
+			# print 'execute cmd ', aa
 			os.system(aa)
-			print os.getcwd()
+			# print os.getcwd()
 
 		# lst = ['ip link add name', 'type dummy', 'ip link set dev', 'up', 'ovs-vsctl add-port br-int']
 		# lst = ['ip link add name', 'type dummy', 'ip link set dev', 'up', 'ovs-vsctl add-port br-int']
