@@ -138,17 +138,17 @@ def main():
 			if mydir == '/':
 				mydir = '~'
 			print 'Root'
-			user1 = colored(user, 'white')
+			user1 = colored(user + '@' + hostname, 'white')
 			semi = colored(':', 'white')
 			mydir = colored(mydir, 'white')
 			dollar = colored('# ', 'white')
 
-			print user1
+			# print user1
 
-			print semi 
-			print hostname
-			print mydir
-			print dollar
+			# print semi 
+			# print hostname
+			# print mydir
+			# print dollar
 		aa = raw_input(user1 + semi + mydir + dollar)
 		# user = getpass.getuser()
 		# user = user.strip()
