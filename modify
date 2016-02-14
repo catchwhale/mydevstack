@@ -140,14 +140,14 @@ def main():
 			mydir = colored(mydir, 'white')
 			dollar = colored('# ', 'white')
 
-		print user1
+		# print user1
 
-		print semi 
-		print mydir
-		print dollar
+		# print semi 
+		# print mydir
+		# print dollar
 		aa = raw_input(user1 + semi + mydir + dollar)
-		user1 = ''
-		user = ''
+		user = getpass.getuser()
+		user = user.strip()
 		# os.system(aa)
 		# hostname = os.popen('hostname').read()
 		# hostname = hostname.strip()
