@@ -103,26 +103,26 @@ def main():
 		# user = user.strip()
 		user = getpass.getuser()
 		user = user.strip()
-		print user
+		# print user
 		hostname = os.popen('hostname').read()
 		hostname = hostname.strip()
-		user = '\033[1m' + ( user + '@' + hostname )
+		user1 = '\033[1m' + ( user + '@' + hostname )
 		mydir1 = '\033[1m' + ( '~/' + mydir1 + '/' + mydir2 )
 		if user != 'root':
 			print 'Not root'
-			user = colored(user, 'green')
+			user = colored(user1, 'green')
 			semi = colored('\033[1m' + ':', 'white')
 			mydir = colored(mydir1, 'blue')
 			dollar = colored('\033[1m' + '$ ', 'white')
 		else:
 			print 'Root'
-			user = colored(user, 'white')
+			user1 = colored(user1, 'white')
 			semi = colored('\033[1m' + ':', 'white')
 			mydir = colored(mydir, 'white')
 			dollar = colored('\033[1m' + '# ', 'white')
 
 
-		aa = raw_input(user + semi + mydir + dollar)
+		aa = raw_input(user1 + semi + mydir + dollar)
 		# os.system(aa)
 		# hostname = os.popen('hostname').read()
 		# hostname = hostname.strip()
