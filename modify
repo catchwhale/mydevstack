@@ -93,6 +93,10 @@ def remove_interface(interface, bridge):
 
 def main():
 	os.system('clear')
+	user = getpass.getuser()
+	user = user.strip()
+	flag = True
+	mydir = '~'
 	while True: # Continuous loop here
 		mydir = os.getcwd()
 		mydir = mydir.strip()
@@ -101,8 +105,7 @@ def main():
 		mydir2 = mydir[-1]
 		# user = os.popen('whoami').read()
 		# user = user.strip()
-		user = getpass.getuser()
-		user = user.strip()
+		
 		# print user
 		hostname = os.popen('hostname').read()
 		hostname = hostname.strip()
@@ -115,8 +118,11 @@ def main():
 			mydir = colored(mydir1, 'blue')
 			dollar = colored('\033[1m' + '$ ', 'white')
 		else:
-			mydir = os.getcwd()
-			mydir = mydir.strip()
+			if flag:
+				flag = False
+			else:	
+				mydir = os.getcwd()
+				mydir = mydir.strip()
 			if mydir == '/home':
 				mydir = '~'
 
