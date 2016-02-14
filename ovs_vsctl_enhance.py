@@ -12,8 +12,6 @@ import re
 import sys
 import subprocess
 import getpass
-from termcolor import colored
-from os.path import expanduser
 
 def remov_element(my_list, key_val):
 	try:
