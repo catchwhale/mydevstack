@@ -136,9 +136,9 @@ def main():
 				mydir = '~'
 			
 			user1 = colored(user1, 'white')
-			semi = colored('\033[1m' + ':', 'white')
-			mydir = colored('\033[1m' + mydir, 'white')
-			dollar = colored('\033[1m' + '# ', 'white')
+			semi = colored(':', 'white')
+			mydir = colored(mydir, 'white')
+			dollar = colored('# ', 'white')
 
 		# print user1, semi, mydir,  dollar
 		aa = raw_input(user1 + semi + mydir + dollar)
