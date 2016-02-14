@@ -125,7 +125,7 @@ def main():
 				mydir = mydir.strip()
 			if mydir == '/home':
 				mydir = '~'
-
+			print mydir
 			user1 = colored(user1, 'white')
 			semi = colored('\033[1m' + ':', 'white')
 			mydir = colored(mydir, 'white')
