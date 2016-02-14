@@ -117,6 +117,7 @@ def main():
 		user1 = '\033[1m' + str_
 		# print user1
 		if user != 'root':
+			print 'Not root'
 			# print user, mydir1
 			mydir1 = mydir1.replace('~', '')
 			str_ = '~/' + mydir1 + '/' + mydir2
@@ -137,7 +138,7 @@ def main():
 				mydir = mydir.strip()
 			if mydir == '/':
 				mydir = '~'
-			print 'Root'
+			# print 'Root'
 			user1 = colored(user + '@' + hostname, 'white')
 			semi = colored(':', 'white')
 			mydir = colored(mydir, 'white')
@@ -145,10 +146,10 @@ def main():
 
 			# print user1
 
-			# print semi 
-			# print hostname
-			# print mydir
-			# print dollar
+		# print semi 
+		# print hostname
+		print mydir
+		# print dollar
 		aa = raw_input(user1 + semi + mydir + dollar)
 		# user = getpass.getuser()
 		# user = user.strip()
