@@ -117,7 +117,7 @@ def main():
 		user1 = '\033[1m' + str_
 		# print user1
 		if user != 'root':
-			print 'Not root'
+			# print 'Not root'
 			# print user, mydir1
 			mydir1 = mydir1.replace('~', '')
 			str_ = '~/' + mydir1 + '/' + mydir2
