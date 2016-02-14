@@ -112,11 +112,13 @@ def main():
 		print aa
 		os.system(aa)
 		lst = ['ip link add name', 'type dummy', 'ip link set dev', 'up', 'ovs-vsctl add-port br-int']
-		cnt = 0
-		for i in lst:
-			if re.search(i, aa):
-				cnt += 1
-		if cnt > 1:		
+		lst = ['ip link add name', 'type dummy', 'ip link set dev', 'up', 'ovs-vsctl add-port br-int']
+		# cnt = 0
+		# for i in lst:
+		# 	if re.search(i, aa):
+		# 		cnt += 1
+		# if cnt > 1:	
+		if re.search('ovs-vsctl add-port br-int', aa):	
 			get_all_bridges_w_interfaces()
 	#raw_input('input here')
 			
