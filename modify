@@ -149,11 +149,12 @@ def main():
 			home = home.strip()
 			os.chdir(home)
 		elif aa == 'exit':
-			user = getpass.getuser()
-			user = user.strip()
-			print user
+			# user = getpass.getuser()
+			# user = user.strip()
 			home = expanduser("~")
 			home = home.strip()
+			user = home.split('/')
+			user = user[-1]
 			os.chdir(home)
 
 		else:
