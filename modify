@@ -110,7 +110,7 @@ def main():
 		# print user
 		hostname = os.popen('hostname').read()
 		hostname = hostname.strip()
-		user1 = '\033[1m' + ( user + '@' + hostname )
+		user1 = ''
 		
 		if user != 'root':
 			print user, mydir1
