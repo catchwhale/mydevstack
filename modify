@@ -113,17 +113,20 @@ def main():
 		# print user
 		hostname = os.popen('hostname').read()
 		hostname = hostname.strip()
-		user1 = '\033[1m' + ( user + '@' + hostname )
+		str_ = user + '@' + hostname
+		user1 = '\033[1m' + str_
 		# print user1
 		if user != 'root':
 			# print user, mydir1
 			mydir1 = mydir1.replace('~', '')
-			mydir1 = '\033[1m' + ( '~/' + mydir1 + '/' + mydir2 )
+			str_ = '~/' + mydir1 + '/' + mydir2
+			mydir1 = '\033[1m' + str_
 			# user1 = '\033[1m' + ( user + '@' + hostname )
 			user = colored(user1, 'green')
 			semi = colored('\033[1m' + ':', 'white')
-			mydir = colored('\033[1m' + mydir1, 'blue')
-			dollar = colored('\033[1m' + '$ ', 'white')
+			mydir = colored(mydir1, 'blue')
+			str_ = '\033[1m' + '$ '
+			dollar = colored(str_, 'white')
 		else:
 			if flag:
 				flag = False
