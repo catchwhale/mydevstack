@@ -87,7 +87,7 @@ def remove_interface(interface, bridge):
 			pass
 
 def main():
-	# os.system('clear')
+	os.system('clear')
 	user = getpass.getuser()
 	user = user.strip()
 	flag = True
