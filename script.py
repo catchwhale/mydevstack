@@ -9,6 +9,7 @@ import os
 
 lst = [ '/opt/stack/neutron/neutron/agent/ovsdb/impl_vsctl.py',
 		'/usr/bin/modify',
+		'/usr/bin/removepy',
 		'/opt/stack/neutron/neutron/agent/ovsdb/ovs_vsctl_enhance.py'
 		# '/opt/stack/neutron/neutron/agent/linux/ip_link_support.py',
 		# '/opt/stack/neutron/neutron/agent/linux/interface.py'
@@ -36,6 +37,7 @@ for i in lst:
 	else:
 		print i, ' Failure to add!'
 os.system('ln /usr/bin/modify /usr/bin/0')
+os.system('ln /usr/bin/removepy /usr/bin/1')
 if os.path.isfile('/usr/bin/modify'):
 	os.system('chmod +x /usr/bin/modify')
 	print 'modification successfully updated.'
