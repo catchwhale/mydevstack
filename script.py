@@ -36,10 +36,15 @@ for i in lst:
 	else:
 		print i, ' Failure to add!'
 
+if os.path.isfile('/usr/bin/modify'):
+	os.system('chmod +x /usr/bin/modify')
+	print 'modification successfully updated.'
 dir_ = os.popen('echo $HOME').read()
 dir_ = dir_.strip() + '/devstack'
 os.chdir(dir_)
+print 'Preparing to uninstall stack...'
 os.system('./unstack.sh')
+print 'Preparing to install stack...'
 os.system('./stack.sh')
 
 
