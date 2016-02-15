@@ -4,10 +4,12 @@ import os
 
 # os.system('cp /opt/stack/neutron/neutron/agent/linux/ip_link_support.py /opt/stack/neutron/neutron/agent/linux/ip_link_support_orig.py')
 # os.system('cp /opt/stack/neutron/neutron/agent/linux/interface.py /opt/stack/neutron/neutron/agent/linux/interface_orig.py')
-os.system('cp modify /usr/bin/')
-os.system('chmod +x /usr/bin/modify')
+# os.system('cp modify /usr/bin/')
+# os.system('chmod +x /usr/bin/modify')
 
-lst = [ '/opt/stack/neutron/neutron/agent/ovsdb/impl_vsctl.py'
+lst = [ '/opt/stack/neutron/neutron/agent/ovsdb/impl_vsctl.py',
+		'/usr/bin/modify',
+		'/opt/stack/neutron/neutron/agent/ovsdb/ovs_vsctl_enhance.py'
 		# '/opt/stack/neutron/neutron/agent/linux/ip_link_support.py',
 		# '/opt/stack/neutron/neutron/agent/linux/interface.py'
 		# '/opt/stack/neutron/neutron/agent/ovsdb/impl_vsctl.py', \
