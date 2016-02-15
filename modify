@@ -108,30 +108,30 @@ def main():
 		hostname = hostname.strip()
 		str_ = user + '@' + hostname
 		user1 = '\033[1m' + str_
-		if user != 'root':
-			mydir1 = mydir1.replace('~', '')
-			str_ = '~/' + mydir1 + '/' + mydir2
-			mydir1 = '\033[1m' + str_
-			# user1 = '\033[1m' + ( user + '@' + hostname )
-			user1 = colored(user1, 'green')
-			semi = colored('\033[1m' + ':', 'white')
-			mydir = colored(mydir1, 'blue')
-			str_ = '\033[1m' + '$ '
-			dollar = colored(str_, 'white')
-		else:
-			if flag:
-				flag = False
-				mydir = mydir_
-				os.chdir('/')
-			else:	
-				mydir = os.getcwd()
-				mydir = mydir.strip()
-			if mydir == '/':
-				mydir = '~'
-			user1 = colored(user + '@' + hostname, 'white')
-			semi = colored(':', 'white')
-			mydir = colored(mydir, 'white')
-			dollar = colored('# ', 'white')
+		# if user != 'root':
+		mydir1 = mydir1.replace('~', '')
+		str_ = '~/' + mydir1 + '/' + mydir2
+		mydir1 = '\033[1m' + str_
+		# user1 = '\033[1m' + ( user + '@' + hostname )
+		user1 = colored(user1, 'green')
+		semi = colored('\033[1m' + ':', 'white')
+		mydir = colored(mydir1, 'blue')
+		str_ = '\033[1m' + '$ '
+		dollar = colored(str_, 'white')
+		# else:
+		# 	if flag:
+		# 		flag = False
+		# 		mydir = mydir_
+		# 		os.chdir('/')
+		# 	else:	
+		# 		mydir = os.getcwd()
+		# 		mydir = mydir.strip()
+		# 	if mydir == '/':
+		# 		mydir = '~'
+		# 	user1 = colored(user + '@' + hostname, 'white')
+		# 	semi = colored(':', 'white')
+		# 	mydir = colored(mydir, 'white')
+		# 	dollar = colored('# ', 'white')
 		aa = raw_input(user1 + semi + mydir + dollar)
 		aa = aa.strip()
 		if aa == 'cd ..':
