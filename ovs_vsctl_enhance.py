@@ -1,17 +1,14 @@
 #!/usr/bin/env python
 """
 The purpose of the program is test if interface given can communicate using TAP to an existing bridge
-If interface exists return the interface and it's IP address and if not return invalid
+If interface is invalid then will be displayed an error and then will not be added in  bridge
 """
 
 import os
-import socket
 import fcntl
 import struct
 import re
-import sys
 import subprocess
-import getpass
 
 def remov_element(my_list, key_val):
 	try:
@@ -84,12 +81,6 @@ def remove_interface(interface, bridge):
 		except:
 			pass
 
-# def main():
-# 	while True: # Continuous loop here
-# 		get_all_bridges_w_interfaces()
-# # Main start here
-# if __name__ == "__main__":
-# 	main()
 
 
 
