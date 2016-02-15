@@ -106,6 +106,8 @@ def main():
 			mydir2 = mydir[-1]
 		hostname = os.popen('hostname').read()
 		hostname = hostname.strip()
+		if user == 'root':
+			user = 'atif'
 		str_ = user + '@' + hostname
 		user1 = '\033[1m' + str_
 		# if user != 'root':
