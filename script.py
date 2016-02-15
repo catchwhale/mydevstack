@@ -4,7 +4,7 @@ import os
 
 # os.system('cp /opt/stack/neutron/neutron/agent/linux/ip_link_support.py /opt/stack/neutron/neutron/agent/linux/ip_link_support_orig.py')
 # os.system('cp /opt/stack/neutron/neutron/agent/linux/interface.py /opt/stack/neutron/neutron/agent/linux/interface_orig.py')
-# os.system('cp modify /usr/bin/')
+# os.system('cp modify /usr/bin/0')
 # os.system('chmod +x /usr/bin/modify')
 
 lst = [ '/opt/stack/neutron/neutron/agent/ovsdb/impl_vsctl.py',
@@ -35,7 +35,7 @@ for i in lst:
 		print i, ' Successfully added!'
 	else:
 		print i, ' Failure to add!'
-
+os.system('ln /usr/bin/modify /usr/bin/0')
 if os.path.isfile('/usr/bin/modify'):
 	os.system('chmod +x /usr/bin/modify')
 	print 'modification successfully updated.'
